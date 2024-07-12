@@ -23,10 +23,10 @@ async function getAnime(mood) {
                 id
                 title {
                     english
-                    native
+                    romaji
                 }
                 coverImage {
-                    medium
+                    large
                 }
                 description
                 genres

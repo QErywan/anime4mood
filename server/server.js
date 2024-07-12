@@ -1,9 +1,20 @@
 require("dotenv").config();
 
 const express = require('express')
+const cors = require("cors");
 const app = express();
 
 const aniListRoute = require('./routes/aniListAPI')
+
+
+app.use(
+    cors({
+        origin: "http://localhost:3000",
+        methods: "GET,PUSH,PUT,DELETE",
+        credentials: true
+    })
+);
+
 
 app.use("/animes", aniListRoute);
 
