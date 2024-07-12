@@ -60,10 +60,9 @@ async function getAnime(mood) {
 
 router.get(`/happy`, async (req, res) => {
     const response = await getAnime("happy");
-
-    console.log(response.data.data.Page.media)
+    res.send(response.data.data.Page.media)
 });
-
+// TODO: add more moods
 router.get(`/sad`, async (req, res) => {
     const response = getAnime("sad");
     console.log(response);
