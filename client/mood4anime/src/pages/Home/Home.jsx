@@ -1,5 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'
+
+import Container from 'react-bootstrap/Container'
+
 import MoodButtons from '../../components/MoodButtons/MoodButtons';
 import './Home.css'
 
@@ -13,12 +16,17 @@ function Home() {
         navigate(`/animes/${mood.toLowerCase()}`, { state : { animes: data } });
     }
 
+    const mainContainer = {
+        width: '60%',
+        marginTop: '10rem',
+    };
 
     return (
-        <div className="Home">
-        <h1>Discover animes based on your mood</h1>
-        <MoodButtons fetchAnimes={fetchAnimes} />
-        </div>
+        <Container className='text-center' style={ mainContainer }>
+            <h1 className='header'>Discover animes based on your mood</h1>
+            <p className='subheader'>What's the mood today?</p>
+            <MoodButtons fetchAnimes={fetchAnimes} />
+        </Container>
     );
 }
 

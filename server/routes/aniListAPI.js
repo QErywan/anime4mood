@@ -1,11 +1,16 @@
 const router = require('express').Router();
 const axios = require('axios');
 
+
+// TODO: make it more random
 async function getAnime(mood) {
     let targetGenres = ''
     switch (mood) {
         case 'happy':
             targetGenres = "Comedy"
+            break;
+        case 'sad':
+            targetGenres = "Romance"
             break;
         default:
             targetGenres = "Drama"
@@ -38,7 +43,7 @@ async function getAnime(mood) {
     let variables = {
         genre: targetGenres,
         page: 1,
-        perPage: 5,
+        perPage: 10,
     };
 
   const response = await axios.post(
@@ -64,11 +69,8 @@ router.get(`/happy`, async (req, res) => {
 });
 // TODO: add more moods
 router.get(`/sad`, async (req, res) => {
-    const response = getAnime("sad");
-    console.log(response);
-    response.then(function(result) {
-        console.log(result.data.data.Page.media);
-    })
+    const response = await getAnime("sad");
+    res.send(response.data.data.Page.media)
 });
 
 
