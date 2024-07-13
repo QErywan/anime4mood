@@ -18,6 +18,10 @@ app.use(
 
 app.use("/animes", aniListRoute);
 
+app._router('/' , (req, res) => {
+    res.send("Server running")
+});
+
 const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
