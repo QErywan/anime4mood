@@ -7,12 +7,12 @@ import Row from 'react-bootstrap/Row'
 const moods = [
     { name: 'Happy', emoji: '😁' },
     { name: 'Sad', emoji: '😔' },
-    { name: 'Loved', emoji: '🤤' },
-    { name: 'Curious', emoji: '🤤' },
-    { name: 'Afraid', emoji: '🤤' },
-    { name: 'Hungry', emoji: '🤤' },
-    { name: 'Hungry', emoji: '🤤' },
-    { name: 'Hungry', emoji: '🤤' },
+    { name: 'Loved', emoji: '😍' },
+    { name: 'Curious', emoji: '🤔' },
+    { name: 'Scared', emoji: '😱' },
+    { name: 'Excited', emoji: '😆' },
+    { name: 'Relaxed', emoji: '😌' },
+    { name: 'Inspired', emoji: '🤩' },
 ]
 
 const MoodButtons = ({ fetchAnimes }) => {

@@ -17,27 +17,26 @@ function Recommendations() {
     const [nextDisabled, setNextDisabled] = useState(false);
 
     // TODO: These kinda breaks
+    // if (cur == 9) {
+    //     setNextDisabled(true);
+    // }
+    // else {
+    //     setNextDisabled(false);
+    // }
+
+    // if (cur == 0) {
+    //     setPrevDisabled(true);
+    // }
+    // else {
+    //     setPrevDisabled(false);
+    // }
+
     const next = () => {
         setCur(cur + 1);
-        console.log(cur);
-        if (cur > 3 && nextDisabled === false) {
-            setNextDisabled(true);
-        }
-
-        if (cur > 0 && prevDisabled === true) {
-            setPrevDisabled(false);
-        }
     }
 
     const prev = () => {
         setCur(cur - 1);
-        if (cur >= 5 && nextDisabled === false) {
-            setNextDisabled(true);
-        }
-
-        if (cur > 0 && prevDisabled === true) {
-            setPrevDisabled(false);
-        }
     }
 
     const cardStyle = {
@@ -61,8 +60,8 @@ function Recommendations() {
             <h2 className='romajiTitle text'>{animes[cur].title.romaji}</h2>
             <p className='englishTitle text'>{animes[cur].title.english ? animes[cur].title.english : animes[cur].title.romaji}</p>
             <div className='md-2'>
-                <Button variant='outline-primary' className='text' onClick={prev}>Back</Button>
-                <Button variant='outline-primary' className='text' onClick={next}>Next</Button>
+                <Button variant='outline-primary' className='text' disabled={prevDisabled} onClick={prev}>Back</Button>
+                <Button variant='outline-primary' className='text' disabled={nextDisabled} onClick={next}>Next</Button>
             </div>
         </Card>
     )
