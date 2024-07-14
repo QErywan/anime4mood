@@ -11,7 +11,7 @@ function Home() {
 
     const fetchAnimes = async (mood) => {
         console.log(mood.toLowerCase());
-        const response = await fetch(`${process.env.SERVER_URL}/animes/${mood.toLowerCase()}`)
+        const response = await fetch(`${process.env.SERVER_URL}/animes/${mood.toLowerCase()}`).then(res => {console.log(res);}).catch(e => {console.log(e);})
         const data = await response.json();
         navigate(`/animes/${mood.toLowerCase()}`, { state : { animes: data } });
     }
