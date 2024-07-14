@@ -9,7 +9,7 @@ const aniListRoute = require('./routes/aniListAPI')
 
 app.use(
     cors({
-        origin: `${CLIENT_URL}`,
+        origin: `${process.env.CLIENT_URL}`,
         methods: "GET,PUSH,PUT,DELETE",
         credentials: true
     })
