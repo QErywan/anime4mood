@@ -18,7 +18,7 @@ app.use(
 
 app.use("/animes", aniListRoute);
 
-app._router('/' , (req, res) => {
+app.use('/' , (req, res) => {
     res.send("Server running")
 });
 
