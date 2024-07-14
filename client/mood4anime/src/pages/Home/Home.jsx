@@ -11,7 +11,7 @@ function Home() {
 
     const fetchAnimes = async (mood) => {
         console.log(mood.toLowerCase());
-        const response = await fetch(`http://localhost:8080/animes/${mood.toLowerCase()}`)
+        const response = await fetch(`${process.env.SERVER_URL}/animes/${mood.toLowerCase()}`)
         const data = await response.json();
         navigate(`/animes/${mood.toLowerCase()}`, { state : { animes: data } });
     }
