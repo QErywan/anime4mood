@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Card from 'react-bootstrap/esm/Card';
@@ -17,12 +17,7 @@ function Recommendations() {
     const [nextDisabled, setNextDisabled] = useState(false);
 
     // TODO: These kinda breaks
-    // if (cur == 9) {
-    //     setNextDisabled(true);
-    // }
-    // else {
-    //     setNextDisabled(false);
-    // }
+
 
     // if (cur == 0) {
     //     setPrevDisabled(true);
@@ -31,13 +26,27 @@ function Recommendations() {
     //     setPrevDisabled(false);
     // }
 
-    const next = () => {
-        setCur(cur + 1);
-    }
-
     const prev = () => {
-        setCur(cur - 1);
-    }
+        setCur(cur => cur - 1);
+    };
+
+    const next = () => {
+        setCur(cur => cur + 1);
+    };
+
+    useEffect(() => {
+        if (cur === 0) {
+            setPrevDisabled(true);
+        } else {
+            setPrevDisabled(false);
+        }
+
+        if (cur === animes.length - 1) {
+            setNextDisabled(true);
+        } else {
+            setNextDisabled(false);
+        }
+    }, [cur, animes]);
 
     const cardStyle = {
         width: '70%',

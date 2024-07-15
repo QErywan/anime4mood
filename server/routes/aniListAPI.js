@@ -1,6 +1,11 @@
 const router = require('express').Router();
 const axios = require('axios');
 
+function randomChoice(min, max) {
+    console.log(Math.ceil(Math.random() * (max - min)) + min - 1);
+    return Math.ceil(Math.random() * (max - min)) + min - 1;;
+};
+
 
 // TODO: make it more random
 async function getAnime(mood) {
@@ -35,6 +40,9 @@ async function getAnime(mood) {
 
     }
 
+
+    let randomYear = randomChoice(2000, 2024);
+
     const query = `
         query ($page: Int, $perPage: Int, $genre: String) {
             Page(page: $page, perPage: $perPage) {
@@ -42,7 +50,7 @@ async function getAnime(mood) {
                     total
                     perPage
                 }
-            media(genre: $genre, type: ANIME, status: FINISHED) {
+            media(genre: $genre, type: ANIME, status: FINISHED, seasonYear: ${randomYear}) {
                 id
                 title {
                     english
@@ -58,13 +66,15 @@ async function getAnime(mood) {
     }
     `;
 
+    console.log(query);
+
     let variables = {
         genre: targetGenres,
         page: 1,
         perPage: 10,
     };
 
-  const response = await axios.post(
+    const response = await axios.post(
     process.env.ANILIST_API_URL,
     {
         query,
@@ -77,8 +87,8 @@ async function getAnime(mood) {
         },
     }
   )
-  console.log(response.data.data.Page.media);
-  return response
+//   console.log(response.data.data.Page.media);
+    return response
 }
 
 router.get(`/happy`, async (req, res) => {
