@@ -30,6 +30,7 @@ function Home() {
             <h1 className='header'>Discover animes based on your mood</h1>
             <p className='subheader'>What's the mood today?</p>
             <MoodButtons fetchAnimes={fetchAnimes} />
+            <p className='subheader'>Made By <em>Qayyum</em></p>
         </Container>
     );
 }
