@@ -11,8 +11,8 @@ function Home() {
 
     const fetchAnimes = async (mood) => {
         try {
-            // const response = await fetch(`https://mood4anime-server.vercel.app/animes/${mood.toLowerCase()}`)
-            const response = await fetch(`http://localhost:8080/animes/${mood.toLowerCase()}`)
+            const response = await fetch(`https://mood4anime-server.vercel.app/animes/${mood.toLowerCase()}`)
+            // const response = await fetch(`http://localhost:8080/animes/${mood.toLowerCase()}`)
             const data = await response.json();
             navigate(`/animes/${mood.toLowerCase()}`, { state : { animes: data } });
         } catch (err) {
