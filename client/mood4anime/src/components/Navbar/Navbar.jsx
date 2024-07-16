@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import backIcon from './back-icon.png';
 
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
@@ -25,12 +26,17 @@ function Navbar({ mood }) {
         borderWidth: '4px',
     };
 
+    const iconStyle = {
+        height: '5rem',
+        width: '5rem'
+    };
+
     return (
         <Card className='py-3 px-1 my-5' style={ cardStyle }>
             <Row>
-                <Col className='navText'>Back icon</Col>
-                <Col className='navText'>Feeling <strong>{mood}</strong> today?</Col>
-                <Col className='navText'>
+                <Col className='navText'><img src={backIcon} alt="back icon" style={ iconStyle } /></Col>
+                <Col className='navText pt-4'>Feeling <strong>{mood}</strong> today?</Col>
+                <Col className='navText pt-3'>
                     <Button onClick={ backButtonAction }>Change mood</Button>
                 </Col>
             </Row>

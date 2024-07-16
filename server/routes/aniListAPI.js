@@ -2,12 +2,10 @@ const router = require('express').Router();
 const axios = require('axios');
 
 function randomChoice(min, max) {
-    console.log(Math.ceil(Math.random() * (max - min)) + min - 1);
     return Math.ceil(Math.random() * (max - min)) + min - 1;;
 };
 
 
-// TODO: make it more random
 async function getAnime(mood) {
     let targetGenres = ''
     switch (mood) {
@@ -59,14 +57,17 @@ async function getAnime(mood) {
                 coverImage {
                     large
                 }
+                averageScore
+                episodes
                 description
                 genres
+                siteUrl
             }
         }
     }
     `;
 
-    console.log(query);
+    // console.log(query);
 
     let variables = {
         genre: targetGenres,
@@ -87,7 +88,7 @@ async function getAnime(mood) {
         },
     }
   )
-//   console.log(response.data.data.Page.media);
+  console.log(response.data.data.Page.media);
     return response
 }
 

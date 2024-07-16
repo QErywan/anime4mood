@@ -9,15 +9,8 @@ import './Home.css'
 function Home() {
     const navigate = useNavigate();
 
-    const fetchAnimes = async (mood) => {
-        try {
-            const response = await fetch(`https://mood4anime-server.vercel.app/animes/${mood.toLowerCase()}`)
-            // const response = await fetch(`http://localhost:8080/animes/${mood.toLowerCase()}`)
-            const data = await response.json();
-            navigate(`/animes/${mood.toLowerCase()}`, { state : { animes: data } });
-        } catch (err) {
-            console.log(err);
-        };
+    const navToAnime = (mood) => {
+        navigate(`/animes/${mood.toLowerCase()}`, { state : mood.toLowerCase() });
     }
 
     const mainContainer = {
@@ -29,7 +22,7 @@ function Home() {
         <Container className='text-center' style={ mainContainer }>
             <h1 className='header'>Discover animes based on your mood</h1>
             <p className='subheader'>What's the mood today?</p>
-            <MoodButtons fetchAnimes={fetchAnimes} />
+            <MoodButtons navToAnime={navToAnime} />
             <p className='subheader'>Made By <em>Qayyum</em></p>
         </Container>
     );
