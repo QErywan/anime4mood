@@ -77,6 +77,8 @@ function Recommendations() {
         width: '100%'
     }
 
+    // TODO: fix descriptions
+
     if (loading) {
         return (
             <Card style={ cardStyle }>
