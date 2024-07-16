@@ -7,4 +7,4 @@ Uses the AniList API to retrieve anime's based on the genre given the mood selec
 Query is also randomised to ensure new recommendations are shown.
 
 ## Example
-<img src='./example.gif' height='200'>
+<img src='./example.gif' height='500'>
