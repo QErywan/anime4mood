@@ -7,4 +7,4 @@ Uses the AniList API to retrieve anime's based on the genre given the mood selec
 Query is also randomised to ensure new recommendations are shown.
 
 ## Example
-![]()
+![](https://github.com/QErywan/anime4mood/blob/main/example.gif)
